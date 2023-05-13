@@ -230,7 +230,9 @@
 <body>
     <header>
         <div class="logo">
-            <img src="/api/media/logo.png" alt="Twitter Logo">
+             <a href="/api/list-data/">
+                <img src="/api/media/logo.png" alt="Twitter Logo">
+             </a>
         </div>
         <div class="user-profile">
             <li><a href="#">POST</a></li>
@@ -239,11 +241,19 @@
     <div class="form-container">
         <form class="form" method="POST" action="{% url 'save_data' %}" enctype="multipart/form-data">
             {% csrf_token %}
+{#            #}
+{#    {% csrf_token %}#}
+{#    <input type="text" name="name" placeholder="Name" required>#}
+{#    <input type="number" name="damages" placeholder="Damages" required>#}
+{#    <input type="number" name="carbon" placeholder="Carbon" required>#}
+{#    <input type="file" name="image_path" required>#}
+{#    <button type="submit">Save</button>#}
+
             <h2 class="form-title">Contact Form</h2>
 
             <div class="form-group">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" id="name" class="form-input" placeholder="Enter your name">
+                <input type="text" name="name" id="name" class="form-input" placeholder="Enter your name">
             </div>
 
             <div class="form-group">

@@ -19,11 +19,13 @@ def process_text(request, username, city, country, text):
 def save_data(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        damages = request.POST.get('damages')
-        carbon = request.POST.get('carbon')
+        # damages = request.POST.get('damages')
+        damages = 69
+        # carbon = request.POST.get('carbon')
+        carbon = 25
         image_path = request.FILES.get('image_path')
 
-        carbon_data = CarbonData(name=name, damages=damages, carbon=carbon, image_path=image_path)
+        carbon_data = CarbonData(name=name , damages=damages, carbon=carbon, image_path=image_path)
         carbon_data.save()
         return redirect('list_data')
 
