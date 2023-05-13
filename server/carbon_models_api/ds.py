@@ -1,3 +1,5 @@
+import os
+
 import tensorflow as tf
 import numpy as np
 import torch
@@ -44,13 +46,14 @@ def generate_embeddings(name, texts):
 
 class FootPrint:
     def __init__(self, path_embd_food, path_embd_contries):
-        self.name_food = pd.read_csv("../embeddings/namefoods.csv")
-        self.name_country = pd.read_csv("../embeddings/namecountry.csv")
-        self.embed_food = np.loadtxt("../embeddings/embedfoods.txt")
-        self.embed_country = np.loadtxt("../embeddings/embedcountry.txt")
+        # print(os.getcwd())
+        self.name_food = pd.read_csv(os.getcwd() + "/carbon_models_api/embeddings/namefoods.csv")
+        self.name_country = pd.read_csv(os.getcwd() + "/carbon_models_api/embeddings/namecountry.csv")
+        self.embed_food = np.loadtxt(os.getcwd() + "/carbon_models_api/embeddings/embedfoods.txt")
+        self.embed_country = np.loadtxt(os.getcwd() + "/carbon_models_api/embeddings/embedcountry.txt")
         self.model = SentenceTransformer('sentence-transformers/bert-base-nli-mean-tokens')
-        self.distances = pd.read_csv("../data/capital_distances.csv")
-        self.food = pd.read_csv("../data/food.csv")
+        self.distances = pd.read_csv(os.getcwd() + "/carbon_models_api/data/capital_distances.csv")
+        self.food = pd.read_csv(os.getcwd() + "/carbon_models_api/data/food.csv")
 
     def cosine_similarity(self, u, v):
         u = np.reshape(u, (1, -1))
@@ -94,7 +97,7 @@ class FootPrintImage(FootPrint):
         self.model_loc = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
         self.processor_loc = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 
-        df = pd.read_csv("../data/foodCO2.csv")
+        df = pd.read_csv(os.getcwd() + "/carbon_models_api/data/foodCO2.csv")
         self.ingredients = df["Food"].to_list()
         self.ingredient_prod = {}
         self.ingredient_trans = {}
@@ -160,7 +163,7 @@ class FootPrintImage(FootPrint):
 
     def image_process(self, image_path, country):
         score = self.image_food(image_path=image_path)
-        if score[2] > 0.5:
+        if score[2] > 0.15:
             return self.food_footprint(image_path=image_path)
         else:
             return self.location_footprint(image_path=image_path, country=country)
