@@ -10,18 +10,24 @@ import json
 def predict(request):
     if request.method == 'POST':
         # Load the ML model
-        # model = joblib.load('mlmodel/models/model.pkl')
-        #
-        # # Get input data from the POST request
-        # data = json.loads(request.body)
-        # feature1 = data.get('feature1')
-        # feature2 = data.get('feature2')
-        #
-        # # Perform prediction using the loaded model
         # prediction = model.predict([[feature1, feature2]])
-
+        prediction = ""
         # Return the prediction as JSON
-        response = {'prediction': ""}
+        response = {'prediction': prediction}
         return JsonResponse(response)
 
     return JsonResponse({'error': 'Invalid request method'})
+
+
+def process_text(request, username, city, country, text):
+    # Perform any processing or operations with the received data
+
+    context = {
+        'username': username,
+        'city': city,
+        'country': country,
+        'text': text
+    }
+    print(context)
+
+    return JsonResponse(context)
