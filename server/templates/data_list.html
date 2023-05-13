@@ -189,19 +189,15 @@
                     <th>Name</th>
                     <th>Score</th>
                 </tr>
-                <tr>
-                    <td>josiftepe</td>
-                    <td>85</td>
-                </tr>
-                <tr>
-                    <td>doktorot</td>
-                    <td>92</td>
-                </tr>
-                <tr>
-                    <td>konstantin</td>
-                    <td>76</td>
-                </tr>
-                <!-- Add more rows as needed -->
+                {% for data in sorted_by_carbon %}
+                    <tr>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.carbon }}</td>
+                    </tr>
+                {% empty %}
+                    <td>No data available</td>
+                    <td></td>
+                {% endfor %}
             </table>
         </div>
     </div>
@@ -216,6 +212,10 @@
 
                     <div class="tweet-actions">
                         <span> Damages: {{ data.damages }} Carbon: {{ data.carbon }}</span>
+                    </div>
+
+                    <div class="tweet-actions">
+                        <span> {{ data.message }}</span>
                     </div>
                 </div>
             </div>
