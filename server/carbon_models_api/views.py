@@ -25,7 +25,7 @@ def save_data(request):
 
         carbon_data = CarbonData(name=name, damages=damages, carbon=carbon, image_path=image_path)
         carbon_data.save()
-        return redirect('data_list')
+        return redirect('list_data')
 
     return render(request, 'data_form.html')
 

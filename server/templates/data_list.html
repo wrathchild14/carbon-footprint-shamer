@@ -1,8 +1,227 @@
-<h1>Data List</h1>
-<ul>
-    {% for data in carbon_data %}
-        <li>{{ data.name }} - Damages: {{ data.damages }} - Carbon: {{ data.carbon }} - <img src="..{{ data.image_path.url }}" alt="Image"></li>
-    {% empty %}
-        <li>No data available</li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Twitter Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #1da1f2;
+            color: white;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .user-profile img {
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .content {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f5f8fa;
+            padding: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #1da1f2;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+        .tweet {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-left: 120px;
+        }
+
+        .tweet-image {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            padding-top: 20px;
+        }
+
+        .avatar-image {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+
+        }
+
+        .user-info {
+            flex-grow: 1;
+            padding-left: 100px;
+        }
+
+        .tweet-actions {
+            padding-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        ol {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ol li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        ol li:before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: #888;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .avatar {
+            max-width: 100%;
+            height: 100px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <img src="/api/media/logo.png" alt="Twitter Logo">
+    </div>
+    <div class="user-profile">
+        <li><a href="#">POST</a></li>
+    </div>
+</header>
+
+<div class="content">
+    <div class="sidebar">
+        <div>
+            <p>LEADERBORD</p>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>josiftepe</td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td>doktorot</td>
+                    <td>92</td>
+                </tr>
+                <tr>
+                    <td>konstantin</td>
+                    <td>76</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </table>
+        </div>
+    </div>
+
+    <div class="main-content">
+        {% for data in carbon_data %}
+            <div class="tweet">
+                <img src="..{{ data.image_path.url }}" alt="User Picture" class="tweet-image">
+                <div class="user-info">
+                    <img src="/api/media/avatar.png" alt="User Picture" class="avatar-image">
+                    <span class="username">{{ data.name }}</span>
+
+                    <div class="tweet-actions">
+                        <span> Damages: {{ data.damages }} Carbon: {{ data.carbon }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+
+</html>
