@@ -28,10 +28,9 @@ def process_text(request, username, city, country, text):
     return JsonResponse(context)
 
 
-def image_detail(request, pk):
+def get_image_path(request, pk):
     uploaded_image = get_object_or_404(UploadedImage, pk=pk)
-    print(uploaded_image.image)
-    return render(request, 'image_detail.html', {'uploaded_image': uploaded_image.image})
+    return render(request, 'image_detail.html', {'uploaded_image': uploaded_image})
 
 
 def upload_image(request):

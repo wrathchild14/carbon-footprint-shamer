@@ -1,7 +1,7 @@
 <h1>Data List</h1>
 <ul>
     {% for data in carbon_data %}
-        <li>{{ data.name }} - Damages: {{ data.damages }} - Carbon: {{ data.carbon }} - <img src="{{ data.image_path.url }}" alt="Image"></li>
+        <li>{{ data.name }} - Damages: {{ data.damages }} - Carbon: {{ data.carbon }} - <img src="..{{ data.image_path.url }}" alt="Image"></li>
     {% empty %}
         <li>No data available</li>
     {% endfor %}
