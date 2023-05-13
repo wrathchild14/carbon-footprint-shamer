@@ -230,9 +230,9 @@
 <body>
     <header>
         <div class="logo">
-             <a href="/api/list-data/">
+            <a href="/api/list-data/">
                 <img src="/api/media/logo.png" alt="Twitter Logo">
-             </a>
+            </a>
         </div>
         <div class="user-profile">
             <li><a href="#">POST</a></li>
@@ -241,13 +241,13 @@
     <div class="form-container">
         <form class="form" method="POST" action="{% url 'save_data' %}" enctype="multipart/form-data">
             {% csrf_token %}
-{#            #}
-{#    {% csrf_token %}#}
-{#    <input type="text" name="name" placeholder="Name" required>#}
-{#    <input type="number" name="damages" placeholder="Damages" required>#}
-{#    <input type="number" name="carbon" placeholder="Carbon" required>#}
-{#    <input type="file" name="image_path" required>#}
-{#    <button type="submit">Save</button>#}
+            {# #}
+            {# {% csrf_token %}#}
+            {# <input type="text" name="name" placeholder="Name" required>#}
+            {# <input type="number" name="damages" placeholder="Damages" required>#}
+            {# <input type="number" name="carbon" placeholder="Carbon" required>#}
+            {# <input type="file" name="image_path" required>#}
+            {# <button type="submit">Save</button>#}
 
             <h2 class="form-title">Contact Form</h2>
 
@@ -263,7 +263,8 @@
 
             <div class="form-group">
                 <label for="message" class="form-label">Message</label>
-                <textarea id="message" class="form-input" placeholder="Enter your message"></textarea>
+                <textarea id="message" style="resize: none;" class="form-input"
+                    placeholder="Enter your message"></textarea>
             </div>
 
 
