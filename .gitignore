@@ -1,5 +1,5 @@
 /server/media/uploads
-/server/carbon_models/migrations
+/server/carbon_models_api/migrations
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

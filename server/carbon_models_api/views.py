@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 
-from .models import UploadedImage
+from .models import UploadedImage, CarbonData
 
 
 def predict(request):
@@ -28,7 +28,7 @@ def process_text(request, username, city, country, text):
     return JsonResponse(context)
 
 
-def image_detail(request, pk):
+def get_image_path(request, pk):
     uploaded_image = get_object_or_404(UploadedImage, pk=pk)
     return render(request, 'image_detail.html', {'uploaded_image': uploaded_image})
 
@@ -39,3 +39,22 @@ def upload_image(request):
         uploaded_image = UploadedImage.objects.create(image=image)
         return redirect('image_detail', pk=uploaded_image.pk)
     return render(request, 'upload.html')
+
+
+def save_data(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        damages = request.POST.get('damages')
+        carbon = request.POST.get('carbon')
+        image_path = request.FILES.get('image_path')
+
+        carbon_data = CarbonData(name=name, damages=damages, carbon=carbon, image_path=image_path)
+        carbon_data.save()
+        return redirect('data_list')
+
+    return render(request, 'data_form.html')
+
+
+def data_list(request):
+    carbon_data = CarbonData.objects.all()
+    return render(request, 'data_list.html', {'carbon_data': carbon_data})

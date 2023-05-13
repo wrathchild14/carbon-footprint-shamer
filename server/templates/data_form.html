@@ -1,0 +1,8 @@
+<form method="POST" action="{% url 'save_data' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="damages" placeholder="Damages" required>
+    <input type="number" name="carbon" placeholder="Carbon" required>
+    <input type="file" name="image_path" required>
+    <button type="submit">Save</button>
+</form>
