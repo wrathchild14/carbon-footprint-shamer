@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 from .models import CarbonData
+# from model_controllers.models_src.ds import FootPrintText, FootPrintImage
 
 
 def process_text(request, username, city, country, text):
@@ -24,8 +25,15 @@ def save_data(request):
             message = "error"
         damages = 69
         # carbon = request.POST.get('carbon')
-        carbon = 25
+
         image_path = request.FILES.get('image_path')
+
+        from carbon_models_api.model_controllers.models_src.ds import FootPrintImage
+        print_image = FootPrintImage("", "")
+        carbon, lista = print_image.image_process(image_path, "Slovenia")
+
+        # text_model = FootPrintText("", "")
+        # carbon, lista = text_model.text_footprint(message, "Slovenia")
 
         carbon_data = CarbonData(name=name, message=message, damages=damages, carbon=carbon, image_path=image_path)
         carbon_data.save()
