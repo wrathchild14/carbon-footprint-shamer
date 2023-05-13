@@ -1,5 +1,0 @@
-<form method="POST" action="{% url 'upload_image' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="image">
-    <button type="submit">Upload</button>
-</form>

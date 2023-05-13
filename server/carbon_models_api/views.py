@@ -55,6 +55,6 @@ def save_data(request):
     return render(request, 'data_form.html')
 
 
-def data_list(request):
+def list_data(request):
     carbon_data = CarbonData.objects.all()
     return render(request, 'data_list.html', {'carbon_data': carbon_data})
