@@ -10,6 +10,31 @@
             font-family: Arial, sans-serif;
         }
 
+        .post-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .post-button:hover {
+            background-color: #0069d9;
+        }
+
+
+        .message-prompt {
+            display: block;
+            font-style: italic;
+            color: gray;
+        }
+
+        .username-style {
+            font-weight: bold;
+            color: #333;
+        }
+
         header {
             background-color: #1da1f2;
             color: white;
@@ -20,7 +45,7 @@
         }
 
         .logo img {
-            height: 30px;
+            height: 50px;
         }
 
         nav ul {
@@ -92,8 +117,8 @@
 
         .avatar-image {
             flex-shrink: 0;
-            width: 50px;
-            height: 50px;
+            width: 20px;
+            height: 20px;
             object-fit: cover;
 
         }
@@ -158,11 +183,11 @@
             background-color: #f5f5f5;
         }
 
-        .avatar {
-            max-width: 100%;
-            height: 100px;
-
-
+        .slogan {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
         }
     </style>
 </head>
@@ -173,14 +198,14 @@
         <img src="/api/media/logo.png" alt="Twitter Logo">
     </div>
     <div class="user-profile">
-        <a href="/api/save-data/">POST</a>
+        <a href="/api/save-data/" class="post-button">POST</a>
     </div>
 </header>
 
 <div class="content">
     <div class="sidebar">
         <div>
-            <p>LEADERBORD</p>
+            <p>LEADERBOARD</p>
         </div>
 
         <div>
@@ -203,19 +228,28 @@
     </div>
 
     <div class="main-content">
+        <div class="slogan">
+            <p>Practice what you preach</p>
+        </div>
+
+
         {% for data in carbon_data %}
             <div class="tweet">
                 <img src="..{{ data.image_path.url }}" alt="User Picture" class="tweet-image">
                 <div class="user-info">
                     <img src="/api/media/avatar.png" alt="User Picture" class="avatar-image">
-                    <span class="username">{{ data.name }}</span>
+                    <span class="username username-style">{{ data.name }}</span>
 
                     <div class="tweet-actions">
-                        <span> Damages: {{ data.damages }} Carbon: {{ data.carbon }}</span>
+                        <span> Carbon: {{ data.carbon }}</span>
                     </div>
 
                     <div class="tweet-actions">
-                        <span> {{ data.message }}</span>
+                        <span> How many turtles? {{ data.damages }}</span>
+                    </div>
+
+                    <div class="tweet-actions">
+                        <span class="message-prompt">{{ data.message }}</span>
                     </div>
                 </div>
             </div>
