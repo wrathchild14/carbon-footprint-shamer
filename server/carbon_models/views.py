@@ -1,10 +1,7 @@
-from django.shortcuts import render
-
-# Create your views here.
-
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
-# import joblib
-import json
+
+from .models import UploadedImage
 
 
 def predict(request):
@@ -20,8 +17,6 @@ def predict(request):
 
 
 def process_text(request, username, city, country, text):
-    # Perform any processing or operations with the received data
-
     context = {
         'username': username,
         'city': city,
@@ -31,3 +26,16 @@ def process_text(request, username, city, country, text):
     print(context)
 
     return JsonResponse(context)
+
+
+def image_detail(request, pk):
+    uploaded_image = get_object_or_404(UploadedImage, pk=pk)
+    return render(request, 'image_detail.html', {'uploaded_image': uploaded_image})
+
+
+def upload_image(request):
+    if request.method == 'POST' and request.FILES.get('image'):
+        image = request.FILES['image']
+        uploaded_image = UploadedImage.objects.create(image=image)
+        return redirect('image_detail', pk=uploaded_image.pk)
+    return render(request, 'upload.html')
