@@ -173,7 +173,7 @@
         <img src="/api/media/logo.png" alt="Twitter Logo">
     </div>
     <div class="user-profile">
-        <li><a href="/api/save-data/">POST</a></li>
+        <a href="/api/save-data/">POST</a>
     </div>
 </header>
 
@@ -219,6 +219,8 @@
                     </div>
                 </div>
             </div>
+        {% empty %}
+            <p>No data available.</p>
         {% endfor %}
     </div>
 </div>

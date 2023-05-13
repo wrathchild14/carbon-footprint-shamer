@@ -34,4 +34,5 @@ def save_data(request):
 
 def list_data(request):
     carbon_data = CarbonData.objects.all()
-    return render(request, 'data_list.html', {'carbon_data': carbon_data})
+    reversed_data = list(carbon_data)[::-1]
+    return render(request, 'data_list.html', {'carbon_data': reversed_data})
