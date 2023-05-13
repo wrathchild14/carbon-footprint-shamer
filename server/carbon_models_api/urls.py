@@ -5,7 +5,6 @@ from server import settings
 from . import views
 
 urlpatterns = [
-    path('predict/', views.predict, name='predict'),
     path('process-text/<str:username>/<str:city>/<str:country>/<str:text>/', views.process_text, name='process-text'),
     path('save-data/', views.save_data, name='save_data'),
     path('list-data/', views.list_data, name='list_data'),
