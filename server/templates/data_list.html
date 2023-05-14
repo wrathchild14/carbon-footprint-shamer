@@ -217,7 +217,7 @@
                 {% for data in sorted_by_carbon %}
                     <tr>
                         <td>{{ data.name }}</td>
-                        <td>{{ data.carbon }}</td>
+                        <td>{{ data.carbon }} g</td>
                     </tr>
                 {% empty %}
                     <td>No data available</td>
@@ -241,11 +241,11 @@
                     <span class="username username-style">{{ data.name }}</span>
 
                     <div class="tweet-actions">
-                        <span> Carbon: {{ data.carbon }}</span>
+                        <span> Carbon: {{ data.carbon }} grams</span>
                     </div>
 
                     <div class="tweet-actions">
-                        <span> How many turtles? {{ data.damages }}</span>
+                        <span>List of destroyed things: {{ data.damages }}</span>
                     </div>
 
                     <div class="tweet-actions">
@@ -256,6 +256,7 @@
         {% empty %}
             <p>No data available.</p>
         {% endfor %}
+
     </div>
 </div>
 </body>
