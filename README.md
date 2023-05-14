@@ -2,7 +2,18 @@
 ## About
 You know how Greta Thunberg is shamming us for excessive CO2 emissions for our daily needs! So why don't we change the sides and check their emissions, while they are preaching to us a eco awareness for the planet? That's exactly what Celebrity CO2 Shamer does. Using their pictures or text posts on social media where they promote their luxorius lifestyle,  calculates the amount of CO2 emission of their extravagant way of living. 
 
-## Instruction
+## Usage instruction
+
+
+Move to server folder and install requirements.
+```
+pip install -r requirements.txt
+```
+
+Works on django sever which serves static pages.
+```
+python manage.py runserver
+```
 
 ## Technology stack
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -17,4 +28,7 @@ You know how Greta Thunberg is shamming us for excessive CO2 emissions for our d
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
 
+# Results
 
+![](results/screen1.png)
+![](results/screen2.png)
