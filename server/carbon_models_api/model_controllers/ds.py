@@ -1,7 +1,6 @@
 import os
 
 import tensorflow as tf
-import numpy as np
 import torch
 import numpy as np
 import json
@@ -16,9 +15,8 @@ from keras.applications.mobilenet_v2 import preprocess_input
 # from keras.preprocessing import image
 # from tensorflow.keras.utils.preprocessing import image
 from keras.utils import image_utils
-from transformers import T5ForConditionalGeneration, T5Tokenizer
-from transformers import ViltProcessor, ViltForQuestionAnswering
-from transformers import BertTokenizer, BertModel
+from transformers import T5ForConditionalGeneration, T5Tokenizer, ViltProcessor, ViltForQuestionAnswering
+# from transformers import BertTokenizer, BertModel
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
@@ -50,7 +48,8 @@ class FootPrint:
         self.name_food = pd.read_csv(os.getcwd() + "/carbon_models_api/model_controllers/embeddings/namefoods.csv")
         self.name_country = pd.read_csv(os.getcwd() + "/carbon_models_api/model_controllers/embeddings/namecountry.csv")
         self.embed_food = np.loadtxt(os.getcwd() + "/carbon_models_api/model_controllers/embeddings/embedfoods.txt")
-        self.embed_country = np.loadtxt(os.getcwd() + "/carbon_models_api/model_controllers/embeddings/embedcountry.txt")
+        self.embed_country = np.loadtxt(
+            os.getcwd() + "/carbon_models_api/model_controllers/embeddings/embedcountry.txt")
         self.model = SentenceTransformer('sentence-transformers/bert-base-nli-mean-tokens')
         self.distances = pd.read_csv(os.getcwd() + "/carbon_models_api/model_controllers/data/capital_distances.csv")
         self.food = pd.read_csv(os.getcwd() + "/carbon_models_api/model_controllers/data/food.csv")
