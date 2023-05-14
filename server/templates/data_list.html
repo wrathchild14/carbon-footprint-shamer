@@ -100,14 +100,17 @@
             padding: 10px;
         }
 
-        .tweet {
+        .emission_entry {
             display: flex;
             align-items: center;
             gap: 20px;
-            padding-left: 120px;
+            margin-bottom: 50px; /* Add margin-bottom to create separation between entries */
+            {#border: 1px solid #ccc; /* Add a border to the emission entry */#}
+            {#border-radius: 8px; /* Add border radius for rounded corners */#}
+            padding: 10px;
         }
 
-        .tweet-image {
+        .entry_image {
             flex-shrink: 0;
             width: 250px;
             height: 250px;
@@ -128,7 +131,7 @@
             padding-left: 100px;
         }
 
-        .tweet-actions {
+        .entry_field {
             padding-top: 10px;
             display: flex;
             gap: 10px;
@@ -234,25 +237,25 @@
 
 
         {% for data in carbon_data %}
-            <div class="tweet">
-                <img src="..{{ data.image_path.url }}" alt="User Picture" class="tweet-image">
+            <div class="emission_entry">
+                <img src="..{{ data.image_path.url }}" alt="User Picture" class="entry_image">
                 <div class="user-info">
                     <img src="/api/media/avatar.png" alt="User Picture" class="avatar-image">
                     <span class="username username-style">{{ data.name }}</span>
 
-                    <div class="tweet-actions">
+                    <div class="entry_field">
                         <span>Origin country: {{ data.country }}</span>
                     </div>
 
-                    <div class="tweet-actions">
+                    <div class="entry_field">
                         <span>Carbon: {{ data.carbon }} grams</span>
                     </div>
 
-                    <div class="tweet-actions">
+                    <div class="entry_field">
                         <span>Used: {{ data.damages }}</span>
                     </div>
 
-                    <div class="tweet-actions">
+                    <div class="entry_field">
                         <span class="message-prompt">{{ data.message }}</span>
                     </div>
                 </div>
