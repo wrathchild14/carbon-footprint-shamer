@@ -10,9 +10,9 @@ class UploadedImage(models.Model):
 
 class CarbonData(models.Model):
     name = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, default='None')
     message = models.TextField(default='')
     damages = models.TextField(default='')
-    # damages = models.DecimalField(max_digits=10, decimal_places=2)
     carbon = models.DecimalField(max_digits=10, decimal_places=2)
     image_path = models.ImageField(upload_to='uploads/')
 
