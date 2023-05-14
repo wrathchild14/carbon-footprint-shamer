@@ -27,13 +27,13 @@ def save_data(request):
             message = "No message attached"
             image_path = request.FILES.get('image_path')
 
-            from carbon_models_api.ds import FootPrintImage
+            from carbon_models_api.model_controllers.ds import FootPrintImage
             print_image = FootPrintImage("", "")
             carbon, lista = print_image.image_process(os.getcwd() + "/carbon_models_api/examples/" + str(image_path),
                                                       str(country))
 
         else:
-            from carbon_models_api.ds import FootPrintText
+            from carbon_models_api.model_controllers.ds import FootPrintText
             text_model = FootPrintText("", "")
             carbon, lista = text_model.text_footprint(message, str(country))
 

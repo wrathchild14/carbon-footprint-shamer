@@ -1,5 +1,8 @@
 /server/media/uploads
 /server/carbon_models_api/migrations
+/server/carbon_models_api/model_controllers/examples
+/server/carbon_models_api/model_controllers/data
+/server/carbon_models_api/model_controllers/embeddings
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
