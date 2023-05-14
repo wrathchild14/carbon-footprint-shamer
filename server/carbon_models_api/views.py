@@ -29,8 +29,8 @@ def save_data(request):
 
             from carbon_models_api.model_controllers.ds import FootPrintImage
             print_image = FootPrintImage("", "")
-            carbon, lista = print_image.image_process(os.getcwd() + "/carbon_models_api/examples/" + str(image_path),
-                                                      str(country))
+            carbon, lista = print_image.image_process(os.getcwd() + "/carbon_models_api/model_controllers/examples/"
+                                                      + str(image_path), str(country))
 
         else:
             from carbon_models_api.model_controllers.ds import FootPrintText
