@@ -53,6 +53,7 @@ def list_data(request):
     carbon_data = CarbonData.objects.all()
     reversed_data = list(carbon_data)[::-1]
 
-    sorted_by_carbon = CarbonData.objects.order_by('carbon', 'name')
+    sorted_by_carbon = CarbonData.objects.order_by('carbon')
 
-    return render(request, 'data_list.html', {'carbon_data': reversed_data, 'sorted_by_carbon': sorted_by_carbon})
+    return render(request, 'data_list.html',
+                  {'carbon_data': reversed_data, 'sorted_by_carbon': list(sorted_by_carbon)[::-1]})
