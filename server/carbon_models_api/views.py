@@ -29,19 +29,22 @@ def save_data(request):
 
             from carbon_models_api.model_controllers.ds import FootPrintImage
             print_image = FootPrintImage("", "")
-            carbon, lista = print_image.image_process(os.getcwd() + "/carbon_models_api/model_controllers/examples/"
-                                                      + str(image_path), str(country))
-
+            distance, lista, is_food = print_image.image_process(os.getcwd() + "/carbon_models_api/model_controllers/examples/"
+                                                        + str(image_path), str(country))
+            carbon = distance * 115
         else:
             from carbon_models_api.model_controllers.ds import FootPrintText
             text_model = FootPrintText("", "")
-            carbon, lista = text_model.text_footprint(message, str(country))
-
+            distance, lista, is_food = text_model.text_footprint(message, str(country))
+            carbon = distance * 115
             image_path = os.path.join(os.getcwd(), 'media', 'logo.png')
 
+        if is_food == "food":
+            distance = 0
+
         damages = ' '.join(lista)
-        carbon_data = CarbonData(name=name, message=message, carbon=carbon, damages=damages, image_path=image_path,
-                                 country=country)
+        carbon_data = CarbonData(name=name, message=message, carbon=carbon, distance=distance, damages=damages,
+                                 image_path=image_path, country=country)
 
         carbon_data.save()
         return redirect('list_data')

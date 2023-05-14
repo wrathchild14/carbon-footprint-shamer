@@ -14,6 +14,7 @@ class CarbonData(models.Model):
     message = models.TextField(default='')
     damages = models.TextField(default='')
     carbon = models.DecimalField(max_digits=10, decimal_places=2)
+    distance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     image_path = models.ImageField(upload_to='uploads/')
 
     def __str__(self):

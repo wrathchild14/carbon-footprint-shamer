@@ -2,7 +2,7 @@ from transformers import ViltProcessor, ViltForQuestionAnswering
 from PIL import Image
 
 image = Image.open("./examples/luka.jpg")
-text = "At which country is this picture taken?"
+text = "Which country?"
 
 processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")

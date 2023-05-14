@@ -153,16 +153,17 @@ class FootPrintImage(FootPrint):
             sum_co2 += 1.5 * trans
             list_kills.append(kill)
 
-        return sum_co2, list_kills
+        return sum_co2, list_kills, "food"
 
     def location_footprint(self, image_path, country):
         closest = self.most_similar_country(self.image_location(image_path))
+        print(closest)
         somth = self.distances[self.distances["Country"] == (str(closest + "," + country))]["Distance (km)"]
-        return (somth.values[0] * 115), ["plane"]
+        return (somth.values[0]), ["plane"], "location"
 
     def image_process(self, image_path, country):
         score = self.image_food(image_path=image_path)
-        if score[2] > 0.15:
+        if score[2] > 0.50:
             return self.food_footprint(image_path=image_path)
         else:
             return self.location_footprint(image_path=image_path, country=country)
@@ -189,7 +190,7 @@ class FootPrintText(FootPrint):
         text = self.text_location(input_text=input_text)
         closest = self.most_similar_country(text)
         somth = self.distances[self.distances["Country"] == (str(closest + "," + country))]["Distance (km)"]
-        return (somth.values[0] * 115), ["plane"]
+        return (somth.values[0]), ["plane"], "location"
 
 
 if __name__ == "__main__":

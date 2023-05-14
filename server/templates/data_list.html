@@ -105,9 +105,7 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 50px; /* Add margin-bottom to create separation between entries */
-            {#border: 1px solid #ccc; /* Add a border to the emission entry */#}
-            {#border-radius: 8px; /* Add border radius for rounded corners */#}
-            padding: 10px;
+        {#border: 1px solid #ccc; /* Add a border to the emission entry */#}{#border-radius: 8px; /* Add border radius for rounded corners */#} padding: 10px;
         }
 
         .entry_image {
@@ -248,7 +246,13 @@
                     </div>
 
                     <div class="entry_field">
-                        <span>Carbon: {{ data.carbon }} grams</span>
+                        <span>Carbon: {{ data.carbon }} g</span>
+                    </div>
+
+                    <div class="entry_field">
+                        {% if data.distance != 0 %}
+                            <span>Distance: {{ data.distance }} km</span>
+                        {% endif %}
                     </div>
 
                     <div class="entry_field">
