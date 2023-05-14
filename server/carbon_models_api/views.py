@@ -27,17 +27,16 @@ def save_data(request):
         message = request.POST.get('message')
         if not message:
             message = "error"
-        damages = 69
-        # carbon = request.POST.get('carbon')
+
+        # damages = 69
 
         image_path = request.FILES.get('image_path')
 
         from carbon_models_api.ds import FootPrintImage
         print_image = FootPrintImage("", "")
-        print(image_path)
         carbon, lista = print_image.image_process(os.getcwd() + "/carbon_models_api/examples/" + str(image_path),
                                                   "Slovenia")
-
+        damages = ' '.join(lista)
         carbon_data = CarbonData(name=name, message=message, carbon=carbon, damages=damages, image_path=image_path)
         # text_model = FootPrintText("", "")
         # carbon, lista = text_model.text_footprint(message, "Slovenia")
